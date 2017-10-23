@@ -19,9 +19,11 @@ async function whois(identifier) {
         console.log({'stdout': stdout,'stderr': stderr });
     }
 
+    console.log(stdout);
+
     let result = {},
         m,
-        reg = /([A-Za-z_][^:]*):([^\r\n]*(?:[\r\n]+(?![A-Za-z_].*:).*)*)/mg;
+        reg = /^([A-Za-z_\s\<][^:]+):([^\r\n]*(?:[\r\n]+(?![A-Za-z_\s\<].*:).*)*)/mg;
 
     while (m = reg.exec(stdout)) {
         result[m[1].trim().toLowerCase()] = m[2].trim();
