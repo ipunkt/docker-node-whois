@@ -1,5 +1,7 @@
 FROM node:8.7-alpine
-RUN apk add --update whois
+
+# install whois and update whois-database
+RUN apk add --no-cache whois
 
 # Create app directory
 RUN mkdir -p /var/www/app
